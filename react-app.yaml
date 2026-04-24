@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: react-container
-          image: ankush6078/react-app:latest  
+          image: ankush6078/react-jenkins-app:latest 
           ports:
             - containerPort: 80
 
