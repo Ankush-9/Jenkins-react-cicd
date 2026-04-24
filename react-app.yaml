@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: react-container
-          image: haidertelusko/react-app:latest   # Jenkins will overwrite this
+          image: ankush6078/react-app:latest  
           ports:
             - containerPort: 80
 
