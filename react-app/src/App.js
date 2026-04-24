@@ -5,23 +5,23 @@ function App() {
   return (
     <div className="App">
       <header className="header">
-        <h1>Welcome to Telusko Learning</h1>
-        <p>Empowering Developers to Learn and Grow 🚀</p>
+        <h1>Welcome to React App</h1>
+        <p>Deployment of React App using Jenkins 🚀</p>
       </header>
 
       <section className="courses">
-        <h2>Our Live Courses</h2>
+        <h2>Tools in use!</h2>
         <ul>
-          <li>🤖 AI Engineering</li>
-          <li>☁️ DevOps with AWS</li>
-          <li>☕ Java Spring Boot with AWS</li>
-          <li>🎓 Udemy Recorded Courses</li>
+          <li>Git</li>
+          <li>Maven</li>
+          <li>Docker</li>
+          <li>K8S</li>
         </ul>
       </section>
 
       <footer className="footer">
         <p>
-          Visit us at <a href="https://telusko.com" target="_blank" rel="noreferrer">telusko.com</a>
+          Visit Github at <a href="https://github.com/Ankush-9">Ankush-9</a>
         </p>
       </footer>
     </div>
