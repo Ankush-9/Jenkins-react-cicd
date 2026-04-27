@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE = "react-jenkins-app"
+    }
+
+    stages {
+        stage('Git Clone') {
+            steps {
+                echo 'Cloning Repository'
+                git branch: 'main', url: 'https://github.com/Ankush-9/Jenkins-react-cicd.git'
+            }
+        }
+
+        stage('Build Docker IMAGE') {
+            steps {
+                dir('react-app'){
+                echo 'Building Image'
+                sh "docker build -t ${DOCKER_IMAGE}:latest ."
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                echo 'Pushing Docker Image'
+                withCredentials([string(credentialsId: 'Docker_pwd', variable: 'Docker_pwd')]) {
+                    sh "echo ${Docker_pwd} | docker login -u ankush6078 --password-stdin"
+                    sh "docker tag ${DOCKER_IMAGE}:latest ankush6078/${DOCKER_IMAGE}:latest"
+                    sh "docker push ankush6078/${DOCKER_IMAGE}:latest"
+                }
+            }
+        }
+        stage('REACT-CD-PIPELINE-TRIGGER') {
+            steps {
+                echo 'Trigger CD job'
+                script{
+                    build 'REACT-CD-PIPELINE'
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Git Cloning') {
+            steps {
+                git branch:'main',url:'https://github.com/Ankush-9/Jenkins-react-cicd.git'
+            }
+        }
+        stage('K8S-Deployment') {
+            steps {
+                echo "Deploying Using K8S"
+                sh 'kubectl apply -f react-app.yaml'
+            }
+        }
+    }
+}
+
